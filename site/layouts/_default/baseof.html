@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} — {{ .Site.Title }}{{ end }}</title>
+  <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ "assets/css/style.css" | relURL }}">
+</head>
+<body>
+
+  <!-- CSS-only hamburger nav -->
+  <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
+
+  <nav class="nav-overlay" role="navigation" aria-label="Main navigation">
+    <label for="nav-toggle" class="nav-close" aria-label="Close menu">✕</label>
+    <ul class="nav-links">
+      <li><a href="#projects" onclick="document.getElementById('nav-toggle').checked=false">Projects</a></li>
+      <li><a href="#feed" onclick="document.getElementById('nav-toggle').checked=false">Writing</a></li>
+      <li><a href="/cv.pdf" target="_blank" rel="noopener">CV / Resume</a></li>
+      <li><a href="#contact" onclick="document.getElementById('nav-toggle').checked=false">Contact</a></li>
+    </ul>
+    <div class="nav-social">
+      <a href="{{ .Site.Params.social_x }}" target="_blank" rel="noopener">X →</a>
+      <a href="{{ .Site.Params.social_linkedin }}" target="_blank" rel="noopener">LinkedIn →</a>
+    </div>
+  </nav>
+
+  <label for="nav-toggle" class="hamburger" aria-label="Open menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </label>
+
+  <main>
+    {{ block "main" . }}{{ end }}
+  </main>
+
+  <footer id="contact">
+    <div class="footer-inner">
+      <p class="footer-name">{{ .Site.Title }}</p>
+      <div class="footer-links">
+        <a href="{{ .Site.Params.social_x }}" target="_blank" rel="noopener">X</a>
+        <a href="{{ .Site.Params.social_linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:you@yoursite.com">Email</a>
+      </div>
+      <p class="footer-copy">{{ now.Year }} — Built with Hugo</p>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+baseURL = "https://florianvasin.com/"
+languageCode = "en-us"
+title = "Phaeton"
+paginate = 999
+
+[params]
+  tagline = "Builder. Thinker. Driver."
+  description = "Personal site of Phaeton — projects, writing, and thoughts."
+  social_x = "https://x.com/yourhandle"
+  social_linkedin = "https://linkedin.com/in/yourhandle"
+
+[taxonomies]
+  tag = "tags"

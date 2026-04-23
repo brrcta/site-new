@@ -1,0 +1,17 @@
+- title: "Project Alpha"
+  description: "A brief description of what this project does and why it matters. Keep it punchy."
+  url: "https://github.com/you/alpha"
+  year: "2024"
+  tags: ["systems", "rust"]
+
+- title: "Project Beta"
+  description: "Another project — what problem it solves, what tech was interesting about it."
+  url: "https://github.com/you/beta"
+  year: "2023"
+  tags: ["web", "go"]
+
+- title: "Project Gamma"
+  description: "Third project. Replace these with your real work."
+  url: "https://github.com/you/gamma"
+  year: "2023"
+  tags: ["hardware", "embedded"]

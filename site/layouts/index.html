@@ -1,0 +1,75 @@
+{{ define "main" }}
+
+  <!-- HERO -->
+  <section class="hero" id="about">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-content">
+      <p class="hero-label">// about</p>
+      <h1 class="hero-name">{{ .Site.Title }}</h1>
+      <p class="hero-tagline">{{ .Site.Params.tagline }}</p>
+      <p class="hero-bio">
+        Replace this with a short bio — who you are, what you do, what you care about.
+        Two or three sentences. No buzzwords.
+      </p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn-glow">View Projects</a>
+        <a href="#feed" class="btn-ghost">Read Writing</a>
+      </div>
+    </div>
+    <div class="hero-scroll-hint" aria-hidden="true">scroll ↓</div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="projects" id="projects">
+    <h2 class="section-label">// projects</h2>
+    <div class="projects-list">
+      {{ range .Site.Data.projects }}
+      <article class="project-row">
+        <div class="project-meta">
+          <span class="project-year">{{ .year }}</span>
+          <div class="project-tags">
+            {{ range .tags }}<span class="tag">{{ . }}</span>{{ end }}
+          </div>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title">
+            {{ if .url }}<a href="{{ .url }}" target="_blank" rel="noopener">{{ .title }} ↗</a>{{ else }}{{ .title }}{{ end }}
+          </h3>
+          <p class="project-desc">{{ .description }}</p>
+        </div>
+      </article>
+      {{ end }}
+    </div>
+  </section>
+
+  <!-- FEED -->
+  <section class="feed" id="feed">
+    <h2 class="section-label">// feed</h2>
+
+    <div class="feed-filters">
+      <a href="#feed" class="filter-btn active">all</a>
+      <a href="/tags/writing" class="filter-btn">writing</a>
+      <a href="/tags/thoughts" class="filter-btn">thoughts</a>
+    </div>
+
+    <div class="feed-list">
+      {{ $allPosts := where .Site.RegularPages "Type" "in" (slice "writing" "thoughts") }}
+      {{ range sort $allPosts "Date" "desc" }}
+      <article class="feed-item">
+        <div class="feed-item-meta">
+          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 02, 2006" }}</time>
+          {{ range .Params.tags }}<span class="tag tag--{{ . }}">{{ . }}</span>{{ end }}
+        </div>
+        <h3 class="feed-item-title">
+          <a href="{{ .Permalink }}">{{ .Title }}</a>
+        </h3>
+        <p class="feed-item-teaser">
+          {{ .Summary | truncate 150 "..." }}
+        </p>
+        <a href="{{ .Permalink }}" class="read-more">Read more →</a>
+      </article>
+      {{ end }}
+    </div>
+  </section>
+
+{{ end }}
