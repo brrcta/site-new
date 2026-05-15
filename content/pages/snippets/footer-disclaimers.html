@@ -1,0 +1,48 @@
+<!--
+  FOOTER-DISCLAIMER BLOCK
+  Lands inside the site footer on every page. Stack-agnostic HTML — the
+  design layer wraps it in the footer component.
+
+  Placeholders:
+    {{SITE_NAME}}        - z.B. "example.de"
+    {{IMPRESSUM_URL}}    - z.B. "/impressum"
+    {{DATENSCHUTZ_URL}}  - z.B. "/datenschutz"
+    {{AFFILIATE_URL}}    - z.B. "/affiliate-hinweis"
+
+  When to remove the nicotine block:
+    Remove <p class="footer-disclaimer footer-disclaimer--nicotine">
+    if the site stops linking to nicotine products entirely. Otherwise
+    leave it on every page — TabakerzV / JuSchG warnings are not
+    page-scoped, they apply site-wide.
+-->
+<div class="footer-disclaimers" role="contentinfo" lang="de">
+
+  <p class="footer-disclaimer footer-disclaimer--affiliate">
+    <strong>Affiliate-Hinweis:</strong>
+    Mit <strong>*</strong> oder <em>„Werbung"</em> markierte Links sind
+    Affiliate-/Provisionslinks. Bei einem Kauf über diese Links erhalten
+    wir eine Provision; für dich entstehen keine Mehrkosten.
+    Details: <a href="{{AFFILIATE_URL}}">Affiliate-Hinweis</a>.
+  </p>
+
+  <p class="footer-disclaimer footer-disclaimer--nicotine">
+    <strong>18+ &nbsp;·&nbsp; Nikotinprodukte:</strong>
+    Inhalte zu nikotinhaltigen Produkten (Nikotinbeutel, „Snus", Tabakwaren)
+    richten sich ausschließlich an Erwachsene ab&nbsp;18&nbsp;Jahren
+    (§&nbsp;10 JuSchG).
+    <strong>Dieses Produkt enthält Nikotin. Nikotin ist ein Stoff, der sehr
+    stark abhängig macht.</strong>
+    Wir machen keine Heilaussagen im Sinne des HWG und versprechen keine
+    Eignung zur Raucherentwöhnung. Der Verkauf von Tabak-Snus außerhalb
+    Schwedens ist in der EU unzulässig (Art.&nbsp;17 TPD 2014/40/EU);
+    verlinkte Anbieter sitzen in Schweden. Bezug zum Eigenbedarf und
+    Konsum durch Volljährige in DE sind nicht strafbar.
+  </p>
+
+  <p class="footer-disclaimer footer-disclaimer--meta">
+    <a href="{{IMPRESSUM_URL}}">Impressum</a> ·
+    <a href="{{DATENSCHUTZ_URL}}">Datenschutz</a> ·
+    <a href="{{AFFILIATE_URL}}">Affiliate-Hinweis</a>
+  </p>
+
+</div>

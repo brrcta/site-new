@@ -1,0 +1,13 @@
+[Unit]
+Description=Trigger affops swarm heartbeat every 10 minutes
+Requires=affops-heartbeat.service
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=10min
+AccuracySec=30s
+Persistent=true
+Unit=affops-heartbeat.service
+
+[Install]
+WantedBy=timers.target

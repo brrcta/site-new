@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# post-commit hook — auto-dispatch swarm tasks on relevant file changes.
+# Install: ln -sf ../../swarm/hooks/post-commit .git/hooks/post-commit
+# Or run setup.sh which links this automatically.
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+DISPATCH="$REPO_ROOT/swarm/scripts/dispatch.sh"
+
+[ -f "$DISPATCH" ] || exit 0
+
+# Get list of files changed in the last commit
+CHANGED=$(git diff-tree --no-commit-id -r --name-only HEAD 2>/dev/null)
+
+# New keyword added to keywords file → queue SEO analysis
+if echo "$CHANGED" | grep -q "context/lvl2-keywords.md"; then
+    bash "$DISPATCH" seo "keyword-file-updated" 2>/dev/null || true
+fi
+
+# New content outline added → no auto-dispatch (manual editorial check required)
+# New swarm script changed → no auto-dispatch (technician review required)
+
+exit 0
