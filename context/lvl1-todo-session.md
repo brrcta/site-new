@@ -20,7 +20,9 @@ Receive payload at `handoff/from-design/` and process per `HANDOFF.md`.
 - [ ] Decide whether `swarm/` and `infra/telegram-bot/` are in scope or should be retired
 - [ ] Log handoff acceptance row in `context/lvl1-decisions.md`
 - [ ] Empty `handoff/from-design/` (keep `.gitkeep`)
-- [ ] Route `content/pages/affiliate-disclaimer.html` → final stack page (`/affiliate-hinweis`); replace every `{{PLACEHOLDER}}`; remove the Amazon `<aside>` if Amazon Partnerprogramm is not used
+- [ ] Fill operator details from `context/operator.md` (Florian Vasin, hi@florianvasin.com, +49 152 230 976 80, Hildastr. 16, DE-77654, Offenburg) into all `{{OPERATOR_NAME}}`, `{{KONTAKT_EMAIL}}`, etc. placeholders across all pages
+- [ ] Route `content/pages/affiliate-disclaimer.html` → final stack page (`/affiliate-hinweis`); replace every `{{PLACEHOLDER}}` (use operator.md); remove the Amazon `<aside>` if Amazon Partnerprogramm is not used
+- [ ] Create the Impressum page (`/impressum`) per German law (§ 5 TMG) — required fields: responsible person (Florian Vasin), address, email, phone, business form, tax ID. Reference `context/operator.md`.
 - [ ] Embed `content/pages/snippets/footer-disclaimers.html` in the site footer (every page) — replace placeholders
 - [ ] Wire `content/pages/snippets/nicotine-warning-block.html` into the page template/component used for any nicotine-product post (above-the-fold)
 - [ ] Convert `content/pages/snippets/nicotine-inline-tag.html` into a reusable component/partial; require it next to every affiliate link to a nicotine product
