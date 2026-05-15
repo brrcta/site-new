@@ -1,0 +1,23 @@
+# Session TODOs
+
+> Pull tasks here from lvl2-todo-backlog.md at the start of each session. Delete completed items — outcomes live in lvl1-decisions.md.
+
+## NEXT SESSION — Awaiting Claude Design handoff
+
+Receive payload at `handoff/from-design/` and process per `HANDOFF.md`.
+
+### On receipt (in this order)
+
+- [ ] Read every file under `handoff/from-design/` before moving anything
+- [ ] Apply `brand.md` → fill `{{PROJECT_NAME}}`, `{{ROOT_PATH}}`, `{{MARKET}}`, `{{LANG}}` in `CLAUDE.md`
+- [ ] Move website source to its final location (root vs `site/` — decide and log)
+- [ ] Populate `context/lvl2-project.md` from `brand.md`
+- [ ] Populate `context/lvl2-tech-stack.md` from `tech-stack.md`
+- [ ] Replace `.claude/rules/phase-gates.md` defaults with project phases from `phases.md`
+- [ ] Rewrite `content/AGENTS.md` and `swarm/AGENTS.md` — both currently contain affops/movinslooow template content
+- [ ] Merge new keys from `env.md` into `.env.example`
+- [ ] Update `.claude/hooks/session-start.sh` with the project's dependency install command
+- [ ] Decide whether `swarm/` and `infra/telegram-bot/` are in scope or should be retired
+- [ ] Log handoff acceptance row in `context/lvl1-decisions.md`
+- [ ] Empty `handoff/from-design/` (keep `.gitkeep`)
+- [ ] Delete this NEXT SESSION block once handoff is fully absorbed

@@ -1,0 +1,90 @@
+{
+  "_comment": "Single source of truth for model routing. Change provider/model here — swarm follows.",
+
+  "providers": {
+    "anthropic": {
+      "cli": "claude",
+      "cli_model_flag": "--model",
+      "models": {
+        "orchestrator": "claude-opus-4-6",
+        "worker":       "claude-opus-4-6",
+        "analyst":      "claude-haiku-4-5-20251001",
+        "reviewer":     "claude-sonnet-4-6",
+        "infra":        "claude-sonnet-4-6",
+        "technician":   "claude-sonnet-4-6"
+      }
+    },
+    "openai": {
+      "cli": "codex",
+      "cli_model_flag": "--model",
+      "models": {
+        "worker":   "o4-mini",
+        "analyst":  "o4-mini"
+      }
+    },
+    "minimax": {
+      "cli": "minimax",
+      "cli_model_flag": "--model",
+      "models": {
+        "worker": "MiniMax-Text-01"
+      }
+    }
+  },
+
+  "_note": "Command-level model routing in infra/telegram-bot/bot.py loads from this file at startup. Swarm inherits these roles when orchestration layer is active.",
+
+  "_roles": {
+    "orchestrator": "Opus 4.6 — top-level planning, PR management, complex reasoning",
+    "worker":       "Opus 4.6 — content drafting (articles, batch); quality over speed",
+    "analyst":      "Haiku 4.5 — keyword research, SEO, SERP lookups; speed over depth",
+    "reviewer":     "Sonnet 4.6 — post-mortems, session analysis, what-went-wrong reasoning",
+    "infra":        "Sonnet 4.6 — orchestrator-initiated infra changes",
+    "technician":   "Sonnet 4.6 — maintenance sub-agent; safety rules require reliable instruction-following"
+  },
+
+  "token_caps": {
+    "_standard": "2x human tokens per role. Human baseline = tokens a skilled human would use to solve the same task.",
+    "heartbeat":    400,
+    "analyst":     1000,
+    "reviewer":    2000,
+    "infra":       2000,
+    "technician":  3000,
+    "orchestrator": 4000,
+    "editorial":   1600,
+    "worker":      6000
+  },
+
+  "cmd_routing": {
+    "_comment": "Maps Telegram bot commands to swarm routing entries. bot.py loads this at startup.",
+    "/draft":            { "role": "worker" },
+    "/content-batch":    { "role": "worker" },
+    "/editorial-check":  { "role": "reviewer" },
+    "/content-optimize": { "role": "reviewer" },
+    "/research":         { "role": "reviewer" },
+    "/competitors":      { "role": "reviewer" },
+    "/recap":            { "role": "reviewer" },
+    "/distill":          { "role": "reviewer" },
+    "/qualify":          { "role": "analyst" },
+    "/track":            { "role": "analyst" },
+    "/trends":           { "role": "analyst" },
+    "/analytics":        { "role": "analyst" },
+    "/status":           { "role": "analyst" },
+    "/keyword-cluster":  { "role": "analyst" },
+    "/wrapup":           { "role": "analyst" }
+  },
+
+  "routing": {
+    "article":     { "provider": "anthropic", "role": "worker" },
+    "batch":       { "provider": "anthropic", "role": "worker" },
+    "research":    { "provider": "anthropic", "role": "analyst" },
+    "seo":         { "provider": "anthropic", "role": "analyst" },
+    "postmortem":  { "provider": "anthropic", "role": "reviewer" },
+    "dashboard":   { "provider": "anthropic", "role": "analyst" },
+    "infra":       { "provider": "anthropic", "role": "infra" },
+    "maintenance": { "provider": "anthropic", "role": "technician" }
+  },
+
+  "_technician_note": "infra role = orchestrator-initiated infra tasks; technician role = delegated sub-agent for config/maintenance. Technician sits below orchestrator in the delegation chain.",
+
+  "swarm_default": { "provider": "anthropic", "role": "worker" }
+}

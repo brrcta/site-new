@@ -1,0 +1,14 @@
+[Unit]
+Description=affops swarm heartbeat (event-driven, 0 tokens when idle)
+After=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/affops
+# Leading dash = optional — won't fail if .env is absent
+EnvironmentFile=-%h/affops/.env
+# Ensure claude binary is on PATH regardless of login shell
+Environment=PATH=/usr/local/bin:/usr/bin:/home/user/.local/bin:/home/user/.npm-global/bin
+ExecStart=/usr/bin/env bash %h/affops/swarm/scripts/heartbeat.sh
+StandardOutput=append:%h/affops/swarm/logs/heartbeat.log
+StandardError=append:%h/affops/swarm/logs/heartbeat.log

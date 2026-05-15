@@ -1,0 +1,15 @@
+[Unit]
+Description=Telegram → Claude Code bridge
+After=network.target
+
+[Service]
+Type=simple
+User=user
+WorkingDirectory=/home/user/affops/infra/telegram-bot
+EnvironmentFile=/home/user/affops/infra/telegram-bot/telegram.env
+ExecStart=/home/user/affops/infra/telegram-bot/venv/bin/python bot.py
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
