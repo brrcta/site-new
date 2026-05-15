@@ -21,6 +21,12 @@
 | 8 | **Cloudflare** | None for content creators | In-house | n/a | n/a | Business entity, sales capacity, vetted | Only B2B channel/reseller (PowerUP, Cloudflare One). No cash for content affiliates. |
 | 9 | **Njalla** | None public | — | — | — | — | No affiliate or referral program. Deliberately minimal marketing surface — privacy registrar. |
 | 10 | **Anthropic** | Referral (credit) + Enterprise (cash) | In-house | Consumer: $10 usage credit per referred Pro signup; Claude Code MAX Guest Passes earn $10 credit. Enterprise: one-time cash fee per referred customer. | n/a (link) | Consumer: any Pro/MAX user. Enterprise: company application, vetted. | No general cash affiliate for Claude.ai / API. Enterprise Referral Partner Terms effective 26 Mar 2025. |
+| 11 | **Patagonia** (US) | Affiliate | **AvantLink** | 8% per sale | 60 d | Manual approval; very selective — site must align with environmental/outdoor values | AvantLink standard (~$25 min, ACH) | **No EU/DE program** — AvantLink program is US-centric. AOV ~$150. |
+| 12 | **Bexley** | Affiliate | **Sovrn Commerce** (ex-VigLink) | Details gated (Sovrn login required) | Gated | Sovrn publisher account; auto-approval typical | Sovrn (~$25 min) | No in-house / Awin / CJ presence — discoverable only via Sovrn. French men's shoes. |
+| 13 | **Uniqlo** (EU/DE) | Affiliate | **Awin** (Uniqlo SE merchant) | ~3% baseline (3–7% tiered by category in some listings) | 30 d | Awin publisher account; manual approval; content sites preferred | Awin (£20 min) | No PPC on brand keywords (typical Awin fashion rule); coupon/cashback often restricted — verify in program terms. |
+| 14 | **Specialized** (US) | Affiliate | **Rakuten Advertising** (LinkShare) | 3% baseline (some listings cite 3–12% tiered) | 30 d | Manual approval; cycling/outdoor relevance | Rakuten (~$50 min) | **No EU affiliate program** — US-only. EU sales routed through local dealers, so DE affiliate value is low. No brand-keyword bidding. |
+| 15 | **Kryptonite** | None | — | — | — | — | — | Only B2B Authorized Reseller program. To earn on Kryptonite, route via Amazon.de Associates or a bike retailer's program (Bike-Components, Fahrrad XXL). |
+| 16 | **Qeridoo** | None public | — | — | — | — | — | Small DE manufacturer. Not listed on Awin, Tradedoubler, Belboon, Daisycon, or 100partnerprogramme. Earn via retailer programs (e.g. Decathlon DE on Awin) instead. |
 
 ---
 
@@ -31,6 +37,12 @@
 - Bike-Components — Awin signup
 - Fahrrad XXL — Webgains signup
 - iHerb — direct signup
+- Uniqlo (EU) — Awin signup (same pipe as Bike-Components, low friction)
+- Bexley — Sovrn signup (terms gated; signup is auto-approval)
+
+**Apply if niche fits, expect selectivity / US-only payout:**
+- Patagonia — AvantLink, 8% / 60 d, but US-centric; only worth it if site has clear outdoor-conscious content. AvantLink approval can be slow.
+- Specialized — US-only; **skip if traffic is mostly DE/EU**, as buyers get rerouted to local dealers anyway.
 
 **Apply but expect low yield (referral credit, not cash):**
 - Hetzner — useful for infra-cost offset; **time-bound, sunset Aug 2026**
@@ -40,8 +52,10 @@
 - Snusdirect — no public program; would need direct outreach (`support@snusdirect.com`). For the snus content track, this is the gap — without an affiliate, monetisation has to come from another snus vendor (Snushus, Northerner, Haypp's affiliate via the SnusOK network, etc. — separate research needed).
 - Savotta — collab/gifting only, not commission. Useful for content-seeding, not revenue.
 
-**No retail affiliate available:**
-- Cloudflare, Njalla — accept this as cost of doing business. Mention organically without expecting commission.
+**No retail affiliate available — earn via the retailers that stock them:**
+- Kryptonite → Amazon.de or Bike-Components / Fahrrad XXL
+- Qeridoo → Decathlon DE (Awin) or other DE bike-retailer programs
+- Cloudflare, Njalla → accept as cost of doing business; mention organically without expecting commission.
 
 ---
 
@@ -69,6 +83,14 @@
   Haypp Group / SnusOK / Northerner — separate research pass).
 - Re-check Amazon.de category rates before launch — schedule changes
   periodically.
+- Bexley: log into Sovrn after signup to confirm commission rate (currently
+  gated).
+- Verify Patagonia AvantLink vs Impact: their own /affiliates.html page
+  links to AvantLink; some 2025/2026 third-party guides claim Impact. Re-
+  verify before applying.
+- Decathlon DE Partnerprogramm (Awin) — worth checking as the umbrella
+  program that covers Qeridoo, Kryptonite, and several other brands the
+  site might mention. Separate research pass.
 
 ---
 
@@ -86,3 +108,9 @@
 - [Savotta Collaborations](https://www.savotta.fi/pages/collaborations)
 - [Anthropic Referral](https://www.anthropic.com/referral)
 - [Snusdirect FAQ](https://www.snusdirect.com/faq)
+- [Patagonia Affiliate Program](https://www.patagonia.com/affiliates.html)
+- [Patagonia on AvantLink](https://www.avantlink.com/programs/10083/patagonia-affiliate-program/)
+- [Bexley on Sovrn Commerce](https://commerce.sovrn.com/merchants/148569/bexley.fr-affiliate-program)
+- [Uniqlo SE on Awin](https://ui.awin.com/merchant-profile/21364/commission-groups)
+- [Specialized Affiliate Program](https://www.specialized.com/us/en/specialized-affiliate-program)
+- [Kryptonite Authorized Reseller Program (PDF)](https://www.kryptonitelock.com/content/dam/kryt-us/en/documents/seller_reseller_retailer_docs/Authorized%20Reseller%20Program.pdf)
