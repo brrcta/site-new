@@ -21,7 +21,10 @@ Receive payload at `handoff/from-design/` and process per `HANDOFF.md`.
 - [ ] Log handoff acceptance row in `context/lvl1-decisions.md`
 - [ ] Empty `handoff/from-design/` (keep `.gitkeep`)
 - [ ] Route `content/pages/affiliate-disclaimer.html` → final stack page (`/affiliate-hinweis`); replace every `{{PLACEHOLDER}}`; remove the Amazon `<aside>` if Amazon Partnerprogramm is not used
-- [ ] Link the affiliate disclaimer from the site footer
+- [ ] Embed `content/pages/snippets/footer-disclaimers.html` in the site footer (every page) — replace placeholders
+- [ ] Wire `content/pages/snippets/nicotine-warning-block.html` into the page template/component used for any nicotine-product post (above-the-fold)
+- [ ] Convert `content/pages/snippets/nicotine-inline-tag.html` into a reusable component/partial; require it next to every affiliate link to a nicotine product
+- [ ] Confirm editorial copy contains zero HWG-triggering phrases (no Raucherentwöhnung / harm-reduction / health-effect claims)
 
 > Projects sub-page is deferred. The Higgsfield → web video pipeline is
 > already documented in `content/pages/videos/README.md` and will be picked
