@@ -20,4 +20,7 @@ Receive payload at `handoff/from-design/` and process per `HANDOFF.md`.
 - [ ] Decide whether `swarm/` and `infra/telegram-bot/` are in scope or should be retired
 - [ ] Log handoff acceptance row in `context/lvl1-decisions.md`
 - [ ] Empty `handoff/from-design/` (keep `.gitkeep`)
+- [ ] Route `content/pages/affiliate-disclaimer.html` → final stack page (`/affiliate-hinweis`); replace every `{{PLACEHOLDER}}`; remove the Amazon `<aside>` if Amazon Partnerprogramm is not used
+- [ ] Route `content/pages/projects.html` → final stack page (`/projekte`); set up `public/videos/` (or stack equivalent) and run the ffmpeg pipeline from `content/pages/videos/README.md` for each Higgsfield clip
+- [ ] Link both pages from the site footer
 - [ ] Delete this NEXT SESSION block once handoff is fully absorbed

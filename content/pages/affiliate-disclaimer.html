@@ -1,0 +1,166 @@
+<!--
+  Affiliate-Hinweis (DE)
+  Stand: {{LAST_UPDATED}}  ← Datum bei jedem Review aktualisieren
+
+  Rechtlicher Rahmen:
+    - § 5a Abs. 4 UWG  : kommerzieller Zweck muss kenntlich gemacht werden
+    - § 6 TMG          : Trennung von Werbung und redaktionellem Inhalt
+    - LG München I, Az. 4 HK O 14545/21  : Affiliate-Links = Werbung,
+      auch ohne Bezahlung im Einzelfall
+    - Amazon-PartnerNet ToS : exakte Pflichtformulierung erforderlich,
+      sobald Amazon-Links genutzt werden (siehe unten)
+
+  Vor Veröffentlichung ausfüllen:
+    {{SITE_NAME}}        - Name des Webangebots
+    {{OPERATOR_NAME}}    - Betreiber (Person oder Firma) - muss mit Impressum übereinstimmen
+    {{IMPRESSUM_URL}}    - z.B. /impressum
+    {{DATENSCHUTZ_URL}}  - z.B. /datenschutz
+    {{KONTAKT_EMAIL}}    - Kontaktadresse
+    {{LAST_UPDATED}}     - z.B. 15. Mai 2026
+    Partnerprogramme    - Liste in <section id="programme"> anpassen
+-->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Affiliate-Hinweis | {{SITE_NAME}}</title>
+  <meta name="description" content="Transparenter Hinweis zu Affiliate-Links und Werbekooperationen auf {{SITE_NAME}}.">
+  <meta name="robots" content="index, follow">
+</head>
+<body>
+
+<main>
+  <article>
+    <header>
+      <h1>Affiliate-Hinweis &amp; Werbekennzeichnung</h1>
+      <p><small>Stand: {{LAST_UPDATED}}</small></p>
+    </header>
+
+    <section id="kurzfassung" aria-labelledby="kurzfassung-titel">
+      <h2 id="kurzfassung-titel">Kurz und ehrlich</h2>
+      <p>
+        Auf dieser Website findest du Links, die mit einem Sternchen
+        (<strong>*</strong>) oder dem Hinweis <strong>„Werbung"</strong>,
+        <strong>„Anzeige"</strong> bzw. <strong>„Affiliate-Link"</strong>
+        gekennzeichnet sind. Klickst du auf einen solchen Link und tätigst
+        anschließend einen Kauf, erhalten wir vom jeweiligen Anbieter eine
+        Provision. <strong>Für dich entstehen dadurch keine Mehrkosten</strong>
+        – der Preis bleibt identisch.
+      </p>
+    </section>
+
+    <section id="was-sind-affiliate-links" aria-labelledby="was-titel">
+      <h2 id="was-titel">Was sind Affiliate-Links?</h2>
+      <p>
+        Affiliate-Links sind Empfehlungslinks zu Produkten oder Dienstleistungen
+        externer Anbieter. Wird über einen solchen Link ein qualifizierter Kauf
+        getätigt, zahlt der Anbieter uns eine prozentuale Vergütung. Die
+        Zuordnung erfolgt in der Regel über ein Cookie oder einen
+        Tracking-Parameter in der URL.
+      </p>
+      <p>
+        Mit dem Klick auf einen Affiliate-Link verlässt du
+        <em>{{SITE_NAME}}</em> und wirst auf die Seite des jeweiligen Anbieters
+        weitergeleitet. Dort gelten ausschließlich die Datenschutzbestimmungen
+        und Allgemeinen Geschäftsbedingungen des Anbieters. Auf die dort
+        verarbeiteten Daten haben wir keinen Einfluss.
+      </p>
+    </section>
+
+    <section id="kennzeichnung" aria-labelledby="kennzeichnung-titel">
+      <h2 id="kennzeichnung-titel">Wie wir kennzeichnen</h2>
+      <p>
+        Wir kennzeichnen werbliche Inhalte gemäß § 5a Abs. 4 UWG sowie § 6 TMG
+        eindeutig und vor dem jeweiligen Inhalt. Folgende Hinweise verwenden wir:
+      </p>
+      <ul>
+        <li><strong>* (Sternchen)</strong> direkt am Link, mit Auflösung im Fußbereich oder per Tooltip</li>
+        <li><strong>„Werbung"</strong> bzw. <strong>„Anzeige"</strong> bei bezahlten Kooperationen, gesponserten Beiträgen oder Produktplatzierungen</li>
+        <li><strong>„Affiliate-Link"</strong> bei Provisionslinks ohne weitere Gegenleistung</li>
+        <li>Beiträge mit überwiegend werblichem Charakter werden zusätzlich im Beitragstitel oder im Vorspann als <strong>„Werbung"</strong> gekennzeichnet</li>
+      </ul>
+    </section>
+
+    <section id="redaktionelle-unabhaengigkeit" aria-labelledby="redaktion-titel">
+      <h2 id="redaktion-titel">Redaktionelle Unabhängigkeit</h2>
+      <p>
+        Wir empfehlen ausschließlich Produkte und Dienstleistungen, die wir
+        selbst getestet, verwendet oder nach sorgfältiger Recherche für
+        empfehlenswert halten. Eine Provisionsmöglichkeit beeinflusst weder
+        die Auswahl noch die Bewertung. Negative Erfahrungen benennen wir
+        offen, auch wenn ein Affiliate-Programm besteht.
+      </p>
+      <p>
+        Die generierten Provisionen tragen dazu bei, die laufenden Kosten
+        dieser Website zu decken und unabhängige Inhalte langfristig zu
+        finanzieren.
+      </p>
+    </section>
+
+    <section id="programme" aria-labelledby="programme-titel">
+      <h2 id="programme-titel">Genutzte Partnerprogramme</h2>
+      <p>Aktuell nehmen wir an folgenden Partner- und Affiliate-Programmen teil:</p>
+      <ul>
+        <!-- Bei Veröffentlichung: tatsächlich genutzte Programme eintragen, nicht spekulativ -->
+        <li>{{PROGRAMM_1}} <!-- z.B. Amazon Partnerprogramm --></li>
+        <li>{{PROGRAMM_2}} <!-- z.B. Awin / AffiliateWindow --></li>
+        <li>{{PROGRAMM_3}} <!-- z.B. Digistore24 --></li>
+        <!-- Weitere bei Bedarf ergänzen -->
+      </ul>
+
+      <!--
+        AMAZON-PFLICHTHINWEIS
+        Folgende Formulierung ist von Amazon vorgeschrieben, sobald
+        Amazon-Affiliate-Links auf der Seite eingesetzt werden.
+        Block bei Nicht-Nutzung von Amazon ENTFERNEN.
+      -->
+      <aside id="amazon-pflichthinweis">
+        <p>
+          <strong>Amazon-Partnerprogramm:</strong>
+          {{SITE_NAME}} ist Teilnehmer des Partnerprogramms von Amazon EU,
+          das zur Bereitstellung eines Mediums für Websites konzipiert wurde,
+          mittels dessen durch die Platzierung von Werbeanzeigen und Links zu
+          amazon.de Werbekostenerstattung verdient werden kann.
+          <strong>Als Amazon-Partner verdienen wir an qualifizierten Verkäufen.</strong>
+        </p>
+      </aside>
+    </section>
+
+    <section id="datenschutz" aria-labelledby="datenschutz-titel">
+      <h2 id="datenschutz-titel">Datenschutz &amp; Tracking</h2>
+      <p>
+        Affiliate-Programme setzen in der Regel Cookies oder vergleichbare
+        Technologien ein, um Käufe der ursprünglich vermittelnden Website
+        zuzuordnen. Diese Verarbeitung erfolgt erst <em>nach</em> dem Klick
+        auf einen Affiliate-Link auf der Seite des jeweiligen Anbieters und
+        liegt in dessen Verantwortung.
+      </p>
+      <p>
+        Details zur Datenverarbeitung auf {{SITE_NAME}} selbst findest du in
+        unserer <a href="{{DATENSCHUTZ_URL}}">Datenschutzerklärung</a>.
+      </p>
+    </section>
+
+    <section id="kontakt" aria-labelledby="kontakt-titel">
+      <h2 id="kontakt-titel">Fragen oder Hinweise?</h2>
+      <p>
+        Sollte dir auf {{SITE_NAME}} eine fehlende oder unklare Kennzeichnung
+        auffallen, freuen wir uns über eine kurze Nachricht an
+        <a href="mailto:{{KONTAKT_EMAIL}}">{{KONTAKT_EMAIL}}</a>.
+        Verantwortlich im Sinne des Presserechts: siehe
+        <a href="{{IMPRESSUM_URL}}">Impressum</a>.
+      </p>
+    </section>
+
+    <footer>
+      <p><small>
+        © {{OPERATOR_NAME}} – Stand: {{LAST_UPDATED}}.
+        Dieser Hinweis wird bei Änderungen der genutzten Programme oder
+        Kennzeichnungspraxis aktualisiert.
+      </small></p>
+    </footer>
+  </article>
+</main>
+
+</body>
+</html>
