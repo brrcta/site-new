@@ -12,8 +12,10 @@ absorbed into whichever framework Claude Design hands off
 | File | Purpose | Placeholders to fill |
 |------|---------|----------------------|
 | `affiliate-disclaimer.html` | DE-compliant affiliate / Werbung notice | `{{SITE_NAME}}`, `{{OPERATOR_NAME}}`, `{{IMPRESSUM_URL}}`, `{{DATENSCHUTZ_URL}}`, `{{KONTAKT_EMAIL}}`, `{{LAST_UPDATED}}`, `{{PROGRAMM_1..3}}` |
-| `projects.html` | Projects sub-page with native HTML5 `<video>` blocks | `{{LANG}}`, `{{SITE_NAME}}`, plus per-project: `{{slug}}`, `{{title}}`, `{{summary}}`, `{{duration}}` |
-| `videos/README.md` | Higgsfield → web encoding pipeline (ffmpeg recipes) | — |
+| `videos/README.md` | Higgsfield → web encoding pipeline for the future Projects page (ffmpeg recipes, hosting convention, embed reference) | — |
+
+A Projects sub-page is **not** in scope yet — only the video pipeline
+infrastructure is staged so it can be built quickly when needed.
 
 ---
 

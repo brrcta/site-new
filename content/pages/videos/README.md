@@ -94,10 +94,25 @@ Add `-an` and remove the `-c:a` / `-b:a` flags.
 
 ---
 
-## Embedding
+## Embedding (when the Projects page is built)
 
-See `content/pages/projects.html` for the `<video>` markup. Key points
-already wired there:
+The page itself is not yet in the repo — only this pipeline is wired up.
+When the page lands, drop one `<video>` block per project. Reference
+markup:
+
+```html
+<video
+  controls muted playsinline loop
+  preload="metadata"
+  poster="/videos/{slug}-poster.jpg"
+  width="1280" height="720">
+  <source src="/videos/{slug}.webm" type="video/webm">
+  <source src="/videos/{slug}.mp4"  type="video/mp4">
+  <a href="/videos/{slug}.mp4">Clip herunterladen</a>
+</video>
+```
+
+Why each attribute:
 
 - `muted` + `playsinline` → iOS Safari plays inline instead of fullscreen
 - `loop` → seamless replay for short demos
