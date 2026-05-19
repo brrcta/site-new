@@ -90,67 +90,29 @@
     position: relative; z-index: 2;
   }
 
-  .window {
-    background: var(--panel);
-    border: 1px solid var(--rule);
-    border-radius: 6px;
-    box-shadow:
-      0 1px 0 rgba(255,255,255,0.04) inset,
-      0 30px 60px -20px rgba(0,0,0,0.5),
-      0 0 0 1px rgba(0,0,0,0.25);
-    overflow: hidden;
-  }
-  .titlebar {
-    display: flex; align-items: center; justify-content: space-between;
-    background: linear-gradient(180deg, #4a5e74 0%, #3d4f63 100%);
-    border-bottom: 1px solid var(--rule);
-    padding: 8px 12px;
-    font-family: "Roboto Mono", monospace;
-    font-size: 12px;
-    color: var(--ink-2);
-  }
-  .titlebar .lights { display: flex; gap: 7px; }
-  .titlebar .lights span {
-    width: 11px; height: 11px; border-radius: 50%;
-    display: inline-block;
-    border: 1px solid rgba(0,0,0,0.35);
-  }
-  .titlebar .lights span:nth-child(1) { background: #ff5f56; }
-  .titlebar .lights span:nth-child(2) { background: #ffbd2e; }
-  .titlebar .lights span:nth-child(3) { background: #27c93f; }
-  .titlebar .path { letter-spacing: 0.04em; }
-  .titlebar .path em { color: var(--cyan); font-style: normal; }
-
   .tabbar {
     display: flex;
-    background: var(--bg-deep);
     border-bottom: 1px solid var(--rule);
-    padding: 0 10px;
+    margin-bottom: 28px;
+    gap: 4px;
     overflow-x: auto;
   }
   .tab {
     appearance: none; border: 0; background: transparent;
     color: var(--ink-dim);
-    font-family: "Roboto Mono", monospace;
-    font-size: 12.5px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding: 12px 16px 11px;
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px 18px 11px;
     cursor: pointer;
     border-bottom: 2px solid transparent;
-    transition: color .15s ease, border-color .15s ease, background .15s ease;
+    transition: color .15s ease, border-color .15s ease;
   }
-  .tab .k { color: var(--ink-faint); margin-right: 8px; font-weight: 700; }
-  .tab:hover { color: var(--ink); background: rgba(255,255,255,0.02); }
-  .tab.active { color: var(--cyan); border-bottom-color: var(--cyan); text-shadow: 0 0 10px rgba(5,217,232,0.35); }
-  .tab.active .k { color: var(--cyan); }
+  .tab:hover { color: var(--ink); }
+  .tab.active { color: var(--cyan); border-bottom-color: var(--cyan); }
 
   .page {
     display: none;
-    padding: 26px 28px 32px;
-    background:
-      linear-gradient(180deg, rgba(255,255,255,0.015) 0%, transparent 30%),
-      var(--panel);
   }
   .page.active { display: block; }
   .page-grid {
@@ -1502,18 +1464,11 @@
 
 <div class="shell">
 
-  <div class="window" data-screen-label="01 Main window">
-    <div class="titlebar" data-comment-anchor="c682992841-div">
-      <div class="lights"><span></span><span></span><span></span></div>
-      <div class="path">~ / <em id="path-frag">main</em>.html</div>
-      <div style="color:var(--ink-faint);">v0.8</div>
-    </div>
-
-    <nav class="tabbar" id="tabbar">
-      <button class="tab active" data-tab="main"><span class="k">01</span>main</button>
-      <button class="tab" data-tab="cv"><span class="k">02</span>cv</button>
-      <button class="tab" data-tab="recs"><span class="k">03</span>recs</button>
-    </nav>
+  <nav class="tabbar" id="tabbar">
+    <button class="tab active" data-tab="main">main</button>
+    <button class="tab" data-tab="cv">cv</button>
+    <button class="tab" data-tab="recs">recs</button>
+  </nav>
 
     <!-- ============ MAIN ============ -->
     <section class="page active" data-tab="main" data-screen-label="02 Main">
@@ -1857,7 +1812,6 @@
 
     </section>
 
-  </div><!-- /window -->
 
   <!-- FOOTER -->
   <div class="footstrip">
@@ -1890,11 +1844,9 @@
   // ===== tabs =====
   const tabs = document.querySelectorAll('.tab');
   const pages = document.querySelectorAll('.page');
-  const pathFrag = document.getElementById('path-frag');
   function goTab(name) {
     tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === name));
     pages.forEach(p => p.classList.toggle('active', p.dataset.tab === name));
-    pathFrag.textContent = name;
     history.replaceState(null, '', '#' + name);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
