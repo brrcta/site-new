@@ -33,3 +33,5 @@ content/pages/videos/*
 
 # Live data files — managed on VPS, not in git
 aphorisms.json
+guestbook.json
+guestbook-pending.json

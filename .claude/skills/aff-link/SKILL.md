@@ -1,53 +1,54 @@
 ---
 name: aff-link
-description: Add a new affiliate product to the recs slider in index.html. Fetches og:title and og:image from the URL automatically. User provides the URL; skill inserts the entry at the top of RX_ITEMS (newest first).
+description: Add a new affiliate product to the recs slider in index.html. Usage: /aff-link URL 'your caption'. Fetches og:title and og:image automatically; caption is taken verbatim from the command.
 allowed-tools: WebFetch, Read, Edit
 ---
 
 # aff-link — Add Affiliate Product
 
-## Goal
-Insert a new entry at the **top** of `RX_ITEMS` in `index.html` (newest addition appears first in the slider).
+## Invocation format
+```
+/aff-link https://affiliate-link.com 'One-line personal take — who it's for, what it changed.'
+```
 
-## Inputs
-- **URL**: the affiliate link the user provides (may be in the current message or ask once)
+Both URL and caption are required in the same command. If either is missing, ask for the missing piece before proceeding.
 
 ## Process
 
-### 1. Get the URL
-If the user did not provide a URL in their message, ask: "Which affiliate URL should I add?"
+### 1. Parse inputs from the user's message
+- **URL**: the first URL-like token in the message
+- **Caption**: the text inside single quotes `'...'` (use verbatim, no edits)
 
 ### 2. Fetch metadata from the URL
-Use WebFetch on the URL. Extract from the HTML:
-- `og:title` → `title` (fall back to `<title>` tag, strip site name suffix after ` | ` or ` — ` or ` - `)
-- `og:image` → `img` (use full absolute URL; if relative, prepend the origin)
-- `og:description` → use as a starting point for `caption` (trim to one sentence max, ~100 chars)
+Use WebFetch on the URL. Extract:
+- `og:title` → `title` (fall back to `<title>` tag; strip site name suffix after ` | ` or ` — ` or ` - `)
+- `og:image` → `img` (use full absolute URL; resolve relative paths against the page origin)
 
-If `og:image` is missing or empty: set `img` to `null` and note it to the user.
+If `og:image` is missing: set `img` to `null` and flag it to the user.
 
-### 3. Build the snippet
-Format the entry exactly like this (preserve spacing and quote style):
+### 3. Build the entry object
+Format exactly like this (preserve indentation and quote style):
 
 ```
     {
       title:   'TITLE',
       url:     'URL',
       img:     'IMG_URL',
-      caption: 'CAPTION — edit this to your own voice.',
+      caption: 'CAPTION',
     },
 ```
 
 ### 4. Insert into index.html
 Read `/home/user/site-new/index.html`.
+
 Find the line:
 ```
   const RX_ITEMS = [
 ```
-Insert the new entry **immediately after** that line, before any existing entries or the comment block. The array must start with the newest item.
 
-Use Edit with `old_string` = the exact `const RX_ITEMS = [` line plus the first line that follows it, and `new_string` = those same lines with the new entry prepended.
+Insert the new entry **immediately after** that line, before any existing entries or the comment block. Newest item must be first (descending chronological order).
 
-**Example — if array is currently empty (only comments):**
+**If array is currently empty (only comments):**
 
 old_string:
 ```
@@ -59,21 +60,21 @@ new_string:
 ```
   const RX_ITEMS = [
     {
-      title:   'Product',
-      url:     'https://...',
-      img:     'https://...',
-      caption: 'Caption here.',
+      title:   'TITLE',
+      url:     'URL',
+      img:     'IMG_URL',
+      caption: 'CAPTION',
     },
     // {
 ```
 
-**Example — if array already has entries:**
+**If array already has entries:**
 
 old_string:
 ```
   const RX_ITEMS = [
     {
-      title:   'Existing product',
+      title:   'Existing first product',
 ```
 
 new_string:
@@ -81,16 +82,15 @@ new_string:
   const RX_ITEMS = [
     {
       title:   'New product',
-      url:     'https://...',
-      img:     'https://...',
-      caption: 'Caption here.',
+      url:     'URL',
+      img:     'IMG_URL',
+      caption: 'CAPTION',
     },
     {
-      title:   'Existing product',
+      title:   'Existing first product',
 ```
 
 ### 5. Report to user
 Show:
-- The exact snippet inserted
-- A one-line reminder: `caption:` is pre-filled from og:description — edit it to your own voice before shipping
-- If `img` was null: note that they need to add an image URL manually
+- The snippet that was inserted
+- If `img` was null: note they need to add an image URL manually at the `img:` field

@@ -1120,6 +1120,33 @@
     font-family: "Roboto Mono", monospace; font-size: 11px;
     color: var(--lime);
   }
+  /* approved guestbook entries */
+  .gb-divider {
+    font-family: "Roboto Mono", monospace;
+    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--ink-faint);
+    margin: 18px 0 10px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .gb-divider::after {
+    content: ""; flex: 1; height: 1px;
+    background: repeating-linear-gradient(90deg, var(--rule) 0 4px, transparent 4px 8px);
+  }
+  .gb-entry {
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--rule);
+  }
+  .gb-entry:last-child { border-bottom: 0; }
+  .gb-entry-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    gap: 8px; margin-bottom: 4px;
+  }
+  .gb-entry-name { font-weight: 600; font-size: 13.5px; color: var(--ink); }
+  .gb-entry-date {
+    font-family: "Roboto Mono", monospace; font-size: 11px; color: var(--blue);
+    white-space: nowrap;
+  }
+  .gb-entry-text { font-size: 14px; color: var(--ink-2); line-height: 1.5; margin: 0; }
 
   /* gallery */
   .gal {
@@ -1544,6 +1571,11 @@
                 <span class="status" id="gb-status"></span>
               </div>
             </form>
+            <!-- approved entries rendered here by JS -->
+            <div id="gb-entries-wrap" hidden>
+              <div class="gb-divider">what people said</div>
+              <div id="gb-entries"></div>
+            </div>
           </div>
 
           <!-- what i think — aphorisms feed -->
@@ -2163,7 +2195,33 @@
     });
   }
 
-  // ===== Guestbook (moderated, no instant publish) =====
+  // ===== Guestbook =====
+  function escHtml(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  // Load approved entries from server
+  (async () => {
+    try {
+      const r = await fetch('/guestbook.json');
+      if (!r.ok) return;
+      const entries = await r.json();
+      if (!Array.isArray(entries) || !entries.length) return;
+      const wrap = document.getElementById('gb-entries-wrap');
+      const list = document.getElementById('gb-entries');
+      entries.forEach(e => {
+        const d = new Date(e.ts);
+        const date = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+        const el = document.createElement('div');
+        el.className = 'gb-entry';
+        el.innerHTML = `<div class="gb-entry-head"><span class="gb-entry-name">${escHtml(e.name)}</span><span class="gb-entry-date">${date}</span></div><p class="gb-entry-text">${escHtml(e.text)}</p>`;
+        list.appendChild(el);
+      });
+      wrap.hidden = false;
+    } catch(e) {}
+  })();
+
+  // Submit new entry → POST to /api/guestbook
   document.getElementById('guestbook').addEventListener('submit', (e) => {
     e.preventDefault();
     const name = document.getElementById('gb-name').value.trim();
@@ -2176,18 +2234,30 @@
       return;
     }
     btn.disabled = true;
-    btn.textContent = "i'm done ✓";
-    stat.style.color = 'var(--lime)';
-    stat.textContent = 'thanks — held for review.';
-    // Wire this to your backend when ready, e.g.:
-    //   fetch('/api/guestbook', { method:'POST', body: JSON.stringify({name,text}) });
-    // Entry will NOT be published until you approve it manually.
-    setTimeout(() => {
+    btn.textContent = 'sending…';
+    fetch('/api/guestbook', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, text }),
+    })
+    .then(r => r.ok ? r.json() : Promise.reject(r.status))
+    .then(() => {
+      stat.style.color = 'var(--lime)';
+      stat.textContent = 'thanks — held for review.';
+      btn.textContent = "i'm done ✓";
+      setTimeout(() => {
+        btn.disabled = false;
+        btn.textContent = "i'm done";
+        stat.textContent = '';
+        document.getElementById('guestbook').reset();
+      }, 2400);
+    })
+    .catch(() => {
+      stat.style.color = 'var(--pink)';
+      stat.textContent = 'something went wrong — try again.';
       btn.disabled = false;
       btn.textContent = "i'm done";
-      stat.textContent = '';
-      document.getElementById('guestbook').reset();
-    }, 2400);
+    });
   });
 
   // ===== SPOTIFY widget removed =====

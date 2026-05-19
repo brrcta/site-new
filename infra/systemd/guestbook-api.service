@@ -1,0 +1,14 @@
+[Unit]
+Description=Guestbook submission API for site
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /var/www/site/infra/guestbook-api.py
+Environment=GB_PENDING=/var/www/site/guestbook-pending.json
+Environment=GB_PORT=8041
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
