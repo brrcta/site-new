@@ -439,6 +439,156 @@
     background: rgba(255,42,109,0.03);
   }
 
+  /* ===== RECS PAGE ===== */
+  /* disclosure strip */
+  .disc-strip {
+    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    padding: 10px 14px;
+    background: var(--bg-deep);
+    border: 1px solid var(--rule);
+    border-radius: 5px;
+    margin-bottom: 4px;
+    font-family: "Roboto Mono", monospace;
+    font-size: 11px;
+    color: var(--ink-dim);
+  }
+  .disc-strip .disc-text { flex: 1; min-width: 160px; }
+  .disc-toggle {
+    background: transparent; border: 1px solid var(--rule);
+    color: var(--cyan); font-family: "Roboto Mono", monospace; font-size: 11px;
+    padding: 3px 9px; border-radius: 3px; cursor: pointer;
+    transition: background .15s, color .15s;
+    white-space: nowrap;
+  }
+  .disc-toggle:hover { background: rgba(5,217,232,0.1); }
+  .badge-aff {
+    font-size: 9.5px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; padding: 2px 6px;
+    border: 1px solid rgba(250,200,99,0.6); color: var(--yellow);
+    border-radius: 2px; text-shadow: 0 0 5px rgba(250,200,99,0.4);
+    white-space: nowrap;
+  }
+  .badge-18 {
+    font-size: 9.5px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; padding: 2px 6px;
+    border: 1px solid rgba(255,42,109,0.6); color: var(--pink);
+    border-radius: 2px; text-shadow: 0 0 5px rgba(255,42,109,0.3);
+    white-space: nowrap;
+  }
+  /* full disclosure block */
+  .disc-full {
+    background: var(--bg-deep);
+    border: 1px solid var(--rule);
+    border-top: 0;
+    border-radius: 0 0 5px 5px;
+    padding: 16px 18px;
+    display: flex; flex-direction: column; gap: 14px;
+    margin-bottom: 4px;
+    font-size: 13px;
+    color: var(--ink-2);
+    line-height: 1.55;
+  }
+  .disc-full h3 {
+    font-family: "Roboto Mono", monospace;
+    font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--yellow); margin: 0 0 6px; font-weight: 700;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .disc-full p { margin: 0 0 6px; }
+  .disc-full p:last-child { margin-bottom: 0; }
+  .disc-full strong { color: var(--ink); }
+  .disc-full .disc-nicotine {
+    border-left: 2px solid var(--pink);
+    padding-left: 12px;
+  }
+  /* product slider */
+  .rx-wrap {
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--panel);
+  }
+  .rx-stage {
+    position: relative;
+    aspect-ratio: 16/9;
+    background:
+      repeating-linear-gradient(135deg, rgba(255,255,255,0.025) 0 10px, transparent 10px 20px),
+      var(--bg-deep);
+    overflow: hidden;
+  }
+  .rx-slide {
+    position: absolute; inset: 0;
+    opacity: 0; transition: opacity .5s ease;
+  }
+  .rx-slide.active { opacity: 1; }
+  .rx-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .rx-slide .rx-ph-glyph {
+    position: absolute; inset: 0;
+    display: grid; place-items: center;
+    font-family: "Roboto Condensed", sans-serif;
+    font-weight: 900; font-size: 72px;
+    color: var(--ink-faint); opacity: 0.4;
+    letter-spacing: -0.04em;
+  }
+  .rx-nav {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    appearance: none; background: rgba(15,20,26,0.55);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: var(--ink-2); font-size: 22px; line-height: 1;
+    width: 36px; height: 36px; border-radius: 50%;
+    display: grid; place-items: center;
+    cursor: pointer; z-index: 4;
+    transition: background .15s, color .15s, border-color .15s;
+    backdrop-filter: blur(4px);
+  }
+  .rx-nav:hover { background: var(--pink); color: #fff; border-color: var(--pink); }
+  .rx-nav-p { left: 10px; }
+  .rx-nav-n { right: 10px; }
+  .rx-ctr {
+    position: absolute; bottom: 8px; right: 10px; z-index: 4;
+    font-family: "Roboto Mono", monospace; font-size: 11px; font-weight: 700;
+    color: var(--ink);
+    background: rgba(10,15,20,0.65);
+    padding: 2px 8px; border-radius: 3px;
+    letter-spacing: 0.06em;
+    backdrop-filter: blur(4px);
+  }
+  .rx-bar {
+    position: absolute; left: 0; bottom: 0; height: 2px;
+    background: var(--cyan); width: 0%;
+    box-shadow: 0 0 8px var(--cyan);
+    transition: width .1s linear; z-index: 5;
+  }
+  .rx-info { padding: 14px 16px 16px; }
+  .rx-title {
+    font-size: 14px; font-weight: 700; color: var(--ink);
+    margin: 0 0 6px; display: flex; align-items: baseline; gap: 5px;
+  }
+  .rx-title a {
+    color: var(--ink); text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color .15s, border-color .15s;
+  }
+  .rx-title a:hover { color: var(--cyan); border-bottom-color: var(--cyan); }
+  .rx-aff {
+    color: var(--yellow); font-family: "Roboto Mono", monospace;
+    font-size: 13px; font-weight: 700;
+    text-shadow: 0 0 6px rgba(250,200,99,0.5);
+  }
+  .rx-cap {
+    font-size: 13px; color: var(--ink-2); line-height: 1.5; margin: 0;
+  }
+  .rx-cap::before {
+    content: "\201C";
+    color: var(--pink); font-family: serif; font-size: 18px;
+    line-height: 0; vertical-align: -3px; margin-right: 2px;
+  }
+  .rx-cap::after {
+    content: "\201D";
+    color: var(--pink); font-family: serif; font-size: 18px;
+    line-height: 0; vertical-align: -3px; margin-left: 2px;
+  }
+
   .lede {
     font-size: 17.5px;
     line-height: 1.55;
@@ -1335,6 +1485,7 @@
     <nav class="tabbar" id="tabbar">
       <button class="tab active" data-tab="main"><span class="k">01</span>main</button>
       <button class="tab" data-tab="cv"><span class="k">02</span>cv</button>
+      <button class="tab" data-tab="recs"><span class="k">03</span>recs</button>
     </nav>
 
     <!-- ============ MAIN ============ -->
@@ -1626,6 +1777,54 @@
       </div>
     </section>
 
+    <!-- ============ RECS ============ -->
+    <section class="page" data-tab="recs" data-screen-label="04 Recs">
+
+      <!-- disclosure strip (always visible) -->
+      <div class="disc-strip">
+        <span class="badge-aff">affiliate *</span>
+        <span class="badge-18">18+</span>
+        <span class="disc-text">commission links — no extra cost to you · nicotine products for adults only</span>
+        <button class="disc-toggle" id="disc-toggle">full disclosure ↓</button>
+      </div>
+
+      <!-- full disclosure (collapsed by default) -->
+      <div class="disc-full" id="disc-full" hidden>
+        <div>
+          <h3>Affiliate links</h3>
+          <p>Links marked <strong>*</strong> are affiliate links. If you buy through them I earn a small commission — the price is identical for you. I only recommend things I actually use or have researched thoroughly. Commission possibility does not influence selection or opinion.</p>
+        </div>
+        <div class="disc-nicotine">
+          <h3>Nicotine products — mandatory notice <span class="badge-18">18+</span></h3>
+          <p><strong>Dieses Produkt enthält Nikotin. Nikotin ist ein Stoff, der sehr stark abhängig macht.</strong> (§ 6 TabakerzV)</p>
+          <p>Content and links relating to nicotine products (nicotine pouches, snus, tobacco) are directed exclusively at adults aged 18 and over (§ 10 JuSchG). If you are younger, this content is not for you.</p>
+          <p><strong>No health claims (HWG).</strong> No therapeutic claims, no promises of harm reduction, smoking cessation, or health improvement are made. Posts are editorial experience reports, not medical advice. If you are considering starting or stopping nicotine use, consult a doctor or call the BZgA quit line: <strong>0800 8 31 31 31</strong>.</p>
+          <p><strong>Legal note:</strong> The sale of tobacco snus within the EU outside Sweden is prohibited (Art. 17 TPD 2014/40/EU). Linked vendors are based in Sweden and sell legally there. Import for personal use and consumption by adults in Germany is not a criminal offence — the prohibition targets commercial sale, not private use. You order and consume at your own responsibility.</p>
+        </div>
+      </div>
+
+      <!-- product slider -->
+      <div class="section" style="margin-top:14px;">
+        <h2 class="neon">picks</h2>
+        <div class="rx-wrap">
+          <div class="rx-stage" id="rx-stage">
+            <button class="rx-nav rx-nav-p" id="rx-prev" aria-label="previous">‹</button>
+            <button class="rx-nav rx-nav-n" id="rx-next" aria-label="next">›</button>
+            <div class="rx-ctr" id="rx-ctr">01/01</div>
+            <div class="rx-bar" id="rx-bar"></div>
+          </div>
+          <div class="rx-info" id="rx-info">
+            <div class="rx-title">
+              <a id="rx-link" href="#" target="_blank" rel="noopener sponsored">[product]</a>
+              <span class="rx-aff">*</span>
+            </div>
+            <p class="rx-cap" id="rx-cap">[caption]</p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
   </div><!-- /window -->
 
   <!-- FOOTER -->
@@ -1674,7 +1873,7 @@
   }
   document.addEventListener('keydown', (e) => {
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-    const map = {'1':'main','2':'cv'};
+    const map = {'1':'main','2':'cv','3':'recs'};
     if (map[e.key]) goTab(map[e.key]);
     if (e.key === 'ArrowLeft') memePrev();
     if (e.key === 'ArrowRight') memeNext();
@@ -1811,9 +2010,8 @@
   })();
 
   // ===== APHORISMS FEED =====
-  // Persisted in localStorage. Feed shows 10 per page, sorted newest first.
-  // No auto-slide — paging is manual.
-  const APH_KEY = 'fva.aphorisms.v1';
+  // Fetched from /aphorisms.json (server file, not in git — managed via aph.sh on VPS).
+  // Feed shows 10 per page, sorted newest first. No auto-slide — paging is manual.
   const APH_PER_PAGE = 10;
   const aphFeed     = document.getElementById('aph-feed');
   const aphPager    = document.getElementById('aph-pager');
@@ -1825,15 +2023,12 @@
   let aphorisms = [];
   let aphPage = 0;
 
-  function aphLoad() {
+  async function aphLoad() {
     try {
-      const raw = localStorage.getItem(APH_KEY);
-      aphorisms = raw ? JSON.parse(raw) : [];
+      const r = await fetch('/aphorisms.json');
+      aphorisms = r.ok ? await r.json() : [];
       if (!Array.isArray(aphorisms)) aphorisms = [];
     } catch(e) { aphorisms = []; }
-  }
-  function aphSave() {
-    try { localStorage.setItem(APH_KEY, JSON.stringify(aphorisms)); } catch(e) {}
   }
   function aphFmtDate(ts) {
     const d = new Date(ts);
@@ -1880,7 +2075,93 @@
   }
   aphPrev.addEventListener('click', () => { aphPage--; aphRender(); });
   aphNext.addEventListener('click', () => { aphPage++; aphRender(); });
-  aphLoad(); aphRender();
+  aphLoad().then(() => aphRender());
+
+  // ===== RECOMMENDED PRODUCTS (recs tab) =====
+  // Add your picks here. Each item: title, url, img (direct URL), caption.
+  // Images are loaded directly from the URL — no local files, no copyright issues.
+  const RX_ITEMS = [
+    // {
+    //   title:   'Product name',
+    //   url:     'https://affiliate-link.com',
+    //   img:     'https://example.com/product-image.jpg',
+    //   caption: 'One-line reason why — who it is for and what it changed.',
+    // },
+  ];
+
+  const rxStage = document.getElementById('rx-stage');
+  const rxBar   = document.getElementById('rx-bar');
+  const rxCtr   = document.getElementById('rx-ctr');
+  const rxLink  = document.getElementById('rx-link');
+  const rxCap   = document.getElementById('rx-cap');
+
+  let rxI = 0, rxProg = 0, rxTimer = null;
+  const RX_PERIOD = 7000;
+
+  function rxPad(n) { return String(n).padStart(2, '0'); }
+
+  function rxBuild() {
+    if (!rxStage) return;
+    RX_ITEMS.forEach((item, i) => {
+      const s = document.createElement('div');
+      s.className = 'rx-slide' + (i === 0 ? ' active' : '');
+      if (item.img) {
+        s.innerHTML = `<img src="${item.img}" alt="${item.title}" loading="lazy">`;
+      } else {
+        s.innerHTML = `<div class="rx-ph-glyph">★</div>`;
+      }
+      rxStage.insertBefore(s, rxBar);
+    });
+    rxUpdate();
+    if (RX_ITEMS.length > 1) rxStart();
+  }
+
+  function rxUpdate() {
+    const slides = rxStage ? rxStage.querySelectorAll('.rx-slide') : [];
+    slides.forEach((s, i) => s.classList.toggle('active', i === rxI));
+    const it = RX_ITEMS[rxI] || {};
+    if (rxLink) { rxLink.textContent = it.title || ''; rxLink.href = it.url || '#'; }
+    if (rxCap)  rxCap.textContent = it.caption || '';
+    if (rxCtr)  rxCtr.textContent = rxPad(rxI + 1) + '/' + rxPad(RX_ITEMS.length);
+  }
+
+  function rxGo(i) {
+    rxI = ((i % RX_ITEMS.length) + RX_ITEMS.length) % RX_ITEMS.length;
+    rxProg = 0; rxUpdate();
+    if (rxBar) rxBar.style.width = '0%';
+  }
+
+  function rxStart() {
+    rxStop();
+    rxTimer = setInterval(() => {
+      rxProg += 100;
+      if (rxBar) rxBar.style.width = (rxProg / RX_PERIOD * 100) + '%';
+      if (rxProg >= RX_PERIOD) { rxProg = 0; rxGo(rxI + 1); }
+    }, 100);
+  }
+  function rxStop() { clearInterval(rxTimer); rxTimer = null; }
+
+  if (rxStage) {
+    rxStage.addEventListener('mouseenter', rxStop);
+    rxStage.addEventListener('mouseleave', () => { if (RX_ITEMS.length > 1) rxStart(); });
+  }
+  const rxPrevBtn = document.getElementById('rx-prev');
+  const rxNextBtn = document.getElementById('rx-next');
+  if (rxPrevBtn) rxPrevBtn.addEventListener('click', () => rxGo(rxI - 1));
+  if (rxNextBtn) rxNextBtn.addEventListener('click', () => rxGo(rxI + 1));
+
+  rxBuild();
+
+  // disclosure toggle
+  const discToggle = document.getElementById('disc-toggle');
+  const discFull   = document.getElementById('disc-full');
+  if (discToggle && discFull) {
+    discToggle.addEventListener('click', () => {
+      const open = !discFull.hidden;
+      discFull.hidden = open;
+      discToggle.textContent = open ? 'full disclosure ↓' : 'collapse ↑';
+    });
+  }
 
   // ===== Guestbook (moderated, no instant publish) =====
   document.getElementById('guestbook').addEventListener('submit', (e) => {
