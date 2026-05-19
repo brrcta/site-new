@@ -30,3 +30,8 @@ analytics/data/
 # Higgsfield video originals — keep README only, not the masters
 content/pages/videos/*
 !content/pages/videos/README.md
+
+# Live data files — managed on VPS, not in git
+aphorisms.json
+guestbook.json
+guestbook-pending.json

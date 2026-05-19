@@ -154,12 +154,7 @@
   }
   .page.active { display: block; }
   .page-grid {
-    display: grid;
-    grid-template-columns: 1fr 280px;
-    gap: 32px;
-  }
-  @media (max-width: 820px) {
-    .page-grid { grid-template-columns: 1fr; }
+    display: block;
   }
 
   /* ===== CINEMATIC HERO ===== */
@@ -339,45 +334,6 @@
   .philosophy li:nth-child(3) .phil-t { color: var(--yellow); text-shadow: 0 0 4px rgba(250,200,99,0.4), 0 0 10px rgba(250,200,99,0.22); }
 
   /* aphorisms feed */
-  .aph-form {
-    display: flex; gap: 8px;
-    margin-bottom: 14px;
-  }
-  .aph-form input {
-    flex: 1;
-    background: var(--bg-deep);
-    border: 1px solid var(--rule);
-    color: var(--ink);
-    padding: 10px 12px;
-    font-family: "Roboto", sans-serif;
-    font-size: 14px;
-    border-radius: 3px;
-    outline: none;
-    transition: border-color .15s ease, box-shadow .15s ease;
-  }
-  .aph-form input::placeholder { color: var(--ink-faint); }
-  .aph-form input:focus {
-    border-color: var(--cyan);
-    box-shadow: 0 0 0 2px rgba(5,217,232,0.18);
-  }
-  .aph-form button {
-    background: var(--pink);
-    border: 0;
-    color: #0e131a;
-    font-weight: 700;
-    font-family: "Roboto Mono", monospace;
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 0 16px;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: filter .15s ease, transform .15s ease, box-shadow .15s ease;
-  }
-  .aph-form button:hover {
-    filter: brightness(1.1); transform: translateY(-1px);
-    box-shadow: 0 6px 14px -8px var(--pink);
-  }
   .aph-feed {
     list-style: none;
     padding: 0;
@@ -471,6 +427,168 @@
   .below-foot.below-foot-single { grid-template-columns: 1fr; }
   .aph-pager[hidden] { display: none; }
 
+  /* neon box outline for aphorisms + guestbook */
+  .aph-box, .gb-box {
+    border: 1px solid rgba(255,42,109,0.35);
+    border-radius: 6px;
+    padding: 16px 18px;
+    box-shadow:
+      0 0 0 1px rgba(255,42,109,0.08),
+      0 0 12px -2px rgba(255,42,109,0.22),
+      inset 0 0 18px -8px rgba(255,42,109,0.06);
+    background: rgba(255,42,109,0.03);
+  }
+
+  /* ===== RECS PAGE ===== */
+  /* disclosure strip */
+  .disc-strip {
+    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    padding: 10px 14px;
+    background: var(--bg-deep);
+    border: 1px solid var(--rule);
+    border-radius: 5px;
+    margin-bottom: 4px;
+    font-family: "Roboto Mono", monospace;
+    font-size: 11px;
+    color: var(--ink-dim);
+  }
+  .disc-strip .disc-text { flex: 1; min-width: 160px; }
+  .disc-toggle {
+    background: transparent; border: 1px solid var(--rule);
+    color: var(--cyan); font-family: "Roboto Mono", monospace; font-size: 11px;
+    padding: 3px 9px; border-radius: 3px; cursor: pointer;
+    transition: background .15s, color .15s;
+    white-space: nowrap;
+  }
+  .disc-toggle:hover { background: rgba(5,217,232,0.1); }
+  .badge-aff {
+    font-size: 9.5px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; padding: 2px 6px;
+    border: 1px solid rgba(250,200,99,0.6); color: var(--yellow);
+    border-radius: 2px; text-shadow: 0 0 5px rgba(250,200,99,0.4);
+    white-space: nowrap;
+  }
+  .badge-18 {
+    font-size: 9.5px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; padding: 2px 6px;
+    border: 1px solid rgba(255,42,109,0.6); color: var(--pink);
+    border-radius: 2px; text-shadow: 0 0 5px rgba(255,42,109,0.3);
+    white-space: nowrap;
+  }
+  /* full disclosure block */
+  .disc-full {
+    background: var(--bg-deep);
+    border: 1px solid var(--rule);
+    border-top: 0;
+    border-radius: 0 0 5px 5px;
+    padding: 16px 18px;
+    display: flex; flex-direction: column; gap: 14px;
+    margin-bottom: 4px;
+    font-size: 13px;
+    color: var(--ink-2);
+    line-height: 1.55;
+  }
+  .disc-full h3 {
+    font-family: "Roboto Mono", monospace;
+    font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--yellow); margin: 0 0 6px; font-weight: 700;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .disc-full p { margin: 0 0 6px; }
+  .disc-full p:last-child { margin-bottom: 0; }
+  .disc-full strong { color: var(--ink); }
+  .disc-full .disc-nicotine {
+    border-left: 2px solid var(--pink);
+    padding-left: 12px;
+  }
+  /* product slider */
+  .rx-wrap {
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--panel);
+  }
+  .rx-stage {
+    position: relative;
+    aspect-ratio: 16/9;
+    background:
+      repeating-linear-gradient(135deg, rgba(255,255,255,0.025) 0 10px, transparent 10px 20px),
+      var(--bg-deep);
+    overflow: hidden;
+  }
+  .rx-slide {
+    position: absolute; inset: 0;
+    opacity: 0; transition: opacity .5s ease;
+  }
+  .rx-slide.active { opacity: 1; }
+  .rx-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .rx-slide .rx-ph-glyph {
+    position: absolute; inset: 0;
+    display: grid; place-items: center;
+    font-family: "Roboto Condensed", sans-serif;
+    font-weight: 900; font-size: 72px;
+    color: var(--ink-faint); opacity: 0.4;
+    letter-spacing: -0.04em;
+  }
+  .rx-nav {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    appearance: none; background: rgba(15,20,26,0.55);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: var(--ink-2); font-size: 22px; line-height: 1;
+    width: 36px; height: 36px; border-radius: 50%;
+    display: grid; place-items: center;
+    cursor: pointer; z-index: 4;
+    transition: background .15s, color .15s, border-color .15s;
+    backdrop-filter: blur(4px);
+  }
+  .rx-nav:hover { background: var(--pink); color: #fff; border-color: var(--pink); }
+  .rx-nav-p { left: 10px; }
+  .rx-nav-n { right: 10px; }
+  .rx-ctr {
+    position: absolute; bottom: 8px; right: 10px; z-index: 4;
+    font-family: "Roboto Mono", monospace; font-size: 11px; font-weight: 700;
+    color: var(--ink);
+    background: rgba(10,15,20,0.65);
+    padding: 2px 8px; border-radius: 3px;
+    letter-spacing: 0.06em;
+    backdrop-filter: blur(4px);
+  }
+  .rx-bar {
+    position: absolute; left: 0; bottom: 0; height: 2px;
+    background: var(--cyan); width: 0%;
+    box-shadow: 0 0 8px var(--cyan);
+    transition: width .1s linear; z-index: 5;
+  }
+  .rx-info { padding: 14px 16px 16px; }
+  .rx-title {
+    font-size: 14px; font-weight: 700; color: var(--ink);
+    margin: 0 0 6px; display: flex; align-items: baseline; gap: 5px;
+  }
+  .rx-title a {
+    color: var(--ink); text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color .15s, border-color .15s;
+  }
+  .rx-title a:hover { color: var(--cyan); border-bottom-color: var(--cyan); }
+  .rx-aff {
+    color: var(--yellow); font-family: "Roboto Mono", monospace;
+    font-size: 13px; font-weight: 700;
+    text-shadow: 0 0 6px rgba(250,200,99,0.5);
+  }
+  .rx-cap {
+    font-size: 13px; color: var(--ink-2); line-height: 1.5; margin: 0;
+  }
+  .rx-cap::before {
+    content: "\201C";
+    color: var(--pink); font-family: serif; font-size: 18px;
+    line-height: 0; vertical-align: -3px; margin-right: 2px;
+  }
+  .rx-cap::after {
+    content: "\201D";
+    color: var(--pink); font-family: serif; font-size: 18px;
+    line-height: 0; vertical-align: -3px; margin-left: 2px;
+  }
+
   .lede {
     font-size: 17.5px;
     line-height: 1.55;
@@ -515,9 +633,7 @@
   /* sidebar variant: section heading inside aside is denser */
   .side-section { margin-top: 0; }
   .side-section + .side-section { margin-top: 22px; }
-  .side-section .rx-disclosure { border-radius: 3px 3px 0 0; }
   .side-section .widget { border-top: 0; border-radius: 0 0 4px 4px; margin-bottom: 14px; }
-  .side-section .rx-disclosure + .widget { border-top: 1px solid var(--rule); }
 
   /* CV timeline */
   .tl { position: relative; padding-left: 22px; }
@@ -806,142 +922,6 @@
   }
   .widget .wh.neon .wh-count span { color: var(--ink); }
 
-  /* affiliate disclosure */
-  .rx-disclosure {
-    display: flex; align-items: center; gap: 8px;
-    padding: 8px 10px;
-    background: rgba(57,255,20,0.06);
-    border-bottom: 1px solid var(--rule);
-    font-family: "Roboto Mono", monospace;
-    font-size: 10.5px;
-    line-height: 1.4;
-    color: var(--ink-2);
-    letter-spacing: 0.02em;
-  }
-  .rx-disclosure .badge-na {
-    flex: none;
-    font-size: 9.5px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    padding: 2px 6px;
-    border: 1px solid var(--lime);
-    color: var(--lime);
-    border-radius: 2px;
-    text-shadow: 0 0 5px rgba(57,255,20,0.5);
-  }
-
-  /* recommended products slider */
-  .rx { padding: 0; }
-  .rx-stage {
-    position: relative;
-    aspect-ratio: 4 / 3;
-    background:
-      repeating-linear-gradient(135deg, rgba(255,255,255,0.03) 0 10px, transparent 10px 20px),
-      var(--panel-2);
-    border-bottom: 1px solid var(--rule);
-    overflow: hidden;
-  }
-  .rx-slide {
-    position: absolute; inset: 0;
-    opacity: 0;
-    transition: opacity .5s ease;
-    display: grid; place-items: center;
-  }
-  .rx-slide.active { opacity: 1; }
-  .rx-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .rx-ph {
-    display: flex; flex-direction: column; align-items: center; gap: 6px;
-    color: var(--ink-dim);
-    font-family: "Roboto Mono", monospace;
-    font-size: 10px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    text-align: center;
-    padding: 8px;
-  }
-  .rx-ph .glyph {
-    font-family: "Roboto Condensed", sans-serif;
-    font-weight: 900;
-    font-size: 56px;
-    line-height: 1;
-    letter-spacing: -0.04em;
-    color: var(--yellow);
-    text-shadow: 0 0 16px rgba(250,200,99,0.5);
-  }
-  .rx-body { padding: 10px 12px 12px; }
-  .rx-title {
-    font-size: 13.5px; font-weight: 700;
-    color: var(--ink);
-    margin: 0 0 4px;
-    display: flex; align-items: baseline; gap: 6px;
-  }
-  .rx-title a {
-    color: inherit; text-decoration: none;
-    border-bottom: 1px solid transparent;
-  }
-  .rx-title a:hover { color: var(--cyan); border-bottom-color: var(--cyan); }
-  .rx-title .ext {
-    font-family: "Roboto Mono", monospace;
-    font-size: 10px;
-    color: var(--pink);
-  }
-  .rx-cap {
-    font-size: 12.5px;
-    color: var(--ink-2);
-    line-height: 1.45;
-    margin: 0;
-  }
-  .rx-cap::before {
-    content: "“";
-    color: var(--pink);
-    font-family: serif;
-    font-size: 18px;
-    line-height: 0;
-    margin-right: 2px;
-    vertical-align: -2px;
-  }
-  .rx-cap::after {
-    content: "”";
-    color: var(--pink);
-    font-family: serif;
-    font-size: 18px;
-    line-height: 0;
-    margin-left: 2px;
-    vertical-align: -2px;
-  }
-  .rx-foot {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 8px 12px 10px;
-    font-family: "Roboto Mono", monospace;
-    font-size: 10.5px;
-    color: var(--ink-faint);
-    border-top: 1px dashed var(--rule);
-  }
-  .rx-foot .controls { display: flex; gap: 6px; }
-  .rx-foot .controls button {
-    appearance: none;
-    width: 22px; height: 22px;
-    border-radius: 50%;
-    border: 1px solid var(--rule);
-    background: var(--panel);
-    color: var(--ink-2);
-    cursor: pointer;
-    font-size: 12px;
-    line-height: 1;
-    display: grid; place-items: center;
-    transition: background .15s, color .15s, border-color .15s;
-  }
-  .rx-foot .controls button:hover {
-    background: var(--pink); color: #fff; border-color: var(--pink);
-  }
-  .rx-foot .ix { color: var(--blue); }
-  .rx-bar {
-    position: absolute; left: 0; bottom: 0;
-    height: 2px; background: var(--yellow); width: 0%;
-    box-shadow: 0 0 8px var(--yellow);
-    transition: width .1s linear;
-  }
 
   /* Spotify */
   .sp { display: flex; gap: 10px; align-items: center; }
@@ -1140,6 +1120,33 @@
     font-family: "Roboto Mono", monospace; font-size: 11px;
     color: var(--lime);
   }
+  /* approved guestbook entries */
+  .gb-divider {
+    font-family: "Roboto Mono", monospace;
+    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--ink-faint);
+    margin: 18px 0 10px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .gb-divider::after {
+    content: ""; flex: 1; height: 1px;
+    background: repeating-linear-gradient(90deg, var(--rule) 0 4px, transparent 4px 8px);
+  }
+  .gb-entry {
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--rule);
+  }
+  .gb-entry:last-child { border-bottom: 0; }
+  .gb-entry-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    gap: 8px; margin-bottom: 4px;
+  }
+  .gb-entry-name { font-weight: 600; font-size: 13.5px; color: var(--ink); }
+  .gb-entry-date {
+    font-family: "Roboto Mono", monospace; font-size: 11px; color: var(--blue);
+    white-space: nowrap;
+  }
+  .gb-entry-text { font-size: 14px; color: var(--ink-2); line-height: 1.5; margin: 0; }
 
   /* gallery */
   .gal {
@@ -1505,6 +1512,7 @@
     <nav class="tabbar" id="tabbar">
       <button class="tab active" data-tab="main"><span class="k">01</span>main</button>
       <button class="tab" data-tab="cv"><span class="k">02</span>cv</button>
+      <button class="tab" data-tab="recs"><span class="k">03</span>recs</button>
     </nav>
 
     <!-- ============ MAIN ============ -->
@@ -1548,7 +1556,7 @@
           </div>
 
           <!-- what others think (moderated guestbook) — home page only -->
-          <div class="section" data-screen-label="02c Guestbook">
+          <div class="section gb-box" data-screen-label="02c Guestbook">
             <h2 class="neon" data-comment-anchor="4e98d94b6d-div">guestbook</h2>
             <form class="gb" id="guestbook" novalidate>
               <label for="gb-name">name <span class="req">*</span></label>
@@ -1563,15 +1571,16 @@
                 <span class="status" id="gb-status"></span>
               </div>
             </form>
+            <!-- approved entries rendered here by JS -->
+            <div id="gb-entries-wrap" hidden>
+              <div class="gb-divider">what people said</div>
+              <div id="gb-entries"></div>
+            </div>
           </div>
 
           <!-- what i think — aphorisms feed -->
-          <div class="section" data-comment-anchor="433267002a-div" data-screen-label="02d What I think">
+          <div class="section aph-box" data-comment-anchor="433267002a-div" data-screen-label="02d What I think">
             <h2 class="neon" data-comment-anchor="dc5b7fd2d0-h2">what i think</h2>
-            <form class="aph-form" id="aph-form" novalidate>
-              <input id="aph-input" type="text" maxlength="180" placeholder="new aphorism — one line, keep it sharp" autocomplete="off">
-              <button type="submit" id="aph-submit">post →</button>
-            </form>
             <ol class="aph-feed" id="aph-feed"></ol>
             <div class="aph-pager" id="aph-pager" hidden>
               <button type="button" id="aph-prev" aria-label="newer">‹ newer</button>
@@ -1601,39 +1610,6 @@
 
         </div>
 
-        <aside class="side">
-          <!-- recommended products (heading matches main sections) -->
-          <div class="section side-section" data-screen-label="02d Recommended">
-            <h2 class="neon" data-comment-anchor="43d961e78b-div">recommend products</h2>
-            <div class="rx-disclosure">
-              <span class="badge-na">not affiliate</span>
-              <span>no commission, no kickbacks — just stuff i actually use.</span>
-            </div>
-            <div class="widget rx-widget">
-            <div class="wb rx" style="padding:0;">
-              <div class="rx-stage" id="rx-stage">
-                <!-- slides injected -->
-                <div class="rx-bar" id="rx-bar"></div>
-              </div>
-              <div class="rx-body">
-                <div class="rx-title">
-                  <a id="rx-link" href="#" target="_blank" rel="noopener">[product name]</a>
-                  <span class="ext" id="rx-domain">[domain]</span>
-                </div>
-                <p class="rx-cap" id="rx-cap">[your one-line thought about why it matters]</p>
-              </div>
-              <div class="rx-foot">
-                <span class="ix"><span id="rx-cat">[category]</span></span>
-                <div class="controls">
-                  <button id="rx-prev" aria-label="previous">‹</button>
-                  <button id="rx-next" aria-label="next">›</button>
-                </div>
-              </div>
-            </div>
-            </div>
-          </div>
-
-        </aside>
       </div>
     </section>
 
@@ -1833,6 +1809,54 @@
       </div>
     </section>
 
+    <!-- ============ RECS ============ -->
+    <section class="page" data-tab="recs" data-screen-label="04 Recs">
+
+      <!-- disclosure strip (always visible) -->
+      <div class="disc-strip">
+        <span class="badge-aff">affiliate *</span>
+        <span class="badge-18">18+</span>
+        <span class="disc-text">commission links — no extra cost to you · nicotine products for adults only</span>
+        <button class="disc-toggle" id="disc-toggle">full disclosure ↓</button>
+      </div>
+
+      <!-- full disclosure (collapsed by default) -->
+      <div class="disc-full" id="disc-full" hidden>
+        <div>
+          <h3>Affiliate links</h3>
+          <p>Links marked <strong>*</strong> are affiliate links. If you buy through them I earn a small commission — the price is identical for you. I only recommend things I actually use or have researched thoroughly. Commission possibility does not influence selection or opinion.</p>
+        </div>
+        <div class="disc-nicotine">
+          <h3>Nicotine products — mandatory notice <span class="badge-18">18+</span></h3>
+          <p><strong>Dieses Produkt enthält Nikotin. Nikotin ist ein Stoff, der sehr stark abhängig macht.</strong> (§ 6 TabakerzV)</p>
+          <p>Content and links relating to nicotine products (nicotine pouches, snus, tobacco) are directed exclusively at adults aged 18 and over (§ 10 JuSchG). If you are younger, this content is not for you.</p>
+          <p><strong>No health claims (HWG).</strong> No therapeutic claims, no promises of harm reduction, smoking cessation, or health improvement are made. Posts are editorial experience reports, not medical advice. If you are considering starting or stopping nicotine use, consult a doctor or call the BZgA quit line: <strong>0800 8 31 31 31</strong>.</p>
+          <p><strong>Legal note:</strong> The sale of tobacco snus within the EU outside Sweden is prohibited (Art. 17 TPD 2014/40/EU). Linked vendors are based in Sweden and sell legally there. Import for personal use and consumption by adults in Germany is not a criminal offence — the prohibition targets commercial sale, not private use. You order and consume at your own responsibility.</p>
+        </div>
+      </div>
+
+      <!-- product slider -->
+      <div class="section" style="margin-top:14px;">
+        <h2 class="neon">picks</h2>
+        <div class="rx-wrap">
+          <div class="rx-stage" id="rx-stage">
+            <button class="rx-nav rx-nav-p" id="rx-prev" aria-label="previous">‹</button>
+            <button class="rx-nav rx-nav-n" id="rx-next" aria-label="next">›</button>
+            <div class="rx-ctr" id="rx-ctr">01/01</div>
+            <div class="rx-bar" id="rx-bar"></div>
+          </div>
+          <div class="rx-info" id="rx-info">
+            <div class="rx-title">
+              <a id="rx-link" href="#" target="_blank" rel="noopener sponsored">[product]</a>
+              <span class="rx-aff">*</span>
+            </div>
+            <p class="rx-cap" id="rx-cap">[caption]</p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
   </div><!-- /window -->
 
   <!-- FOOTER -->
@@ -1881,7 +1905,7 @@
   }
   document.addEventListener('keydown', (e) => {
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-    const map = {'1':'main','2':'cv'};
+    const map = {'1':'main','2':'cv','3':'recs'};
     if (map[e.key]) goTab(map[e.key]);
     if (e.key === 'ArrowLeft') memePrev();
     if (e.key === 'ArrowRight') memeNext();
@@ -2017,114 +2041,11 @@
     startMemeTimer();
   })();
 
-  // ===== RECOMMENDED PRODUCTS SLIDER =====
-  // Items live here. Replace freely. Each item: title, url, caption (your thought),
-  // category, and an optional image at `img` (probed; falls back to a placeholder glyph).
-  const RX_ITEMS = [
-    {
-      title:   '[product one]',
-      url:     'https://example.com/one',
-      img:     'assets/recs/01.jpg',
-      glyph:   '★',
-      cat:     '[category]',
-      caption: '[your one-line thought — why this matters to me]',
-    },
-    {
-      title:   '[product two]',
-      url:     'https://example.com/two',
-      img:     'assets/recs/02.jpg',
-      glyph:   '◆',
-      cat:     '[category]',
-      caption: '[your one-line thought — what it changed about how i work]',
-    },
-    {
-      title:   '[product three]',
-      url:     'https://example.com/three',
-      img:     'assets/recs/03.jpg',
-      glyph:   '●',
-      cat:     '[category]',
-      caption: '[your one-line thought — who i\'d recommend it to]',
-    },
-  ];
-
-  const rxStage  = document.getElementById('rx-stage');
-  const rxLink   = document.getElementById('rx-link');
-  const rxDomain = document.getElementById('rx-domain');
-  const rxCap    = document.getElementById('rx-cap');
-  const rxCat    = document.getElementById('rx-cat');
-  const rxIdx    = document.getElementById('rx-idx');
-  const rxTotal  = document.getElementById('rx-total');
-  const rxBar    = document.getElementById('rx-bar');
-
-  let rxI = 0;
-  let rxTimer = null;
-  let rxProg = 0;
-  const RX_PERIOD = 6000;
-
-  function domainOf(u) {
-    try { return new URL(u).hostname.replace(/^www\./,''); } catch(e) { return ''; }
-  }
-
-  // build slides, try to load each image
-  (async () => {
-    for (let i = 0; i < RX_ITEMS.length; i++) {
-      const item = RX_ITEMS[i];
-      const s = document.createElement('div');
-      s.className = 'rx-slide' + (i === 0 ? ' active' : '');
-      const okSrc = item.img ? await probe(item.img) : null;
-      if (okSrc) {
-        s.innerHTML = `<img src="${okSrc}" alt="${item.title}">`;
-      } else {
-        s.innerHTML = `<div class="rx-ph"><div class="glyph">${item.glyph||'★'}</div><div>${item.img ? 'drop image at ' + item.img : 'add an image'}</div></div>`;
-      }
-      rxStage.insertBefore(s, rxBar);
-    }
-    if (rxTotal) rxTotal.textContent = String(RX_ITEMS.length);
-    rxUpdate();
-    rxStart();
-  })();
-
-  function rxUpdate() {
-    const slides = rxStage.querySelectorAll('.rx-slide');
-    slides.forEach((s, i) => s.classList.toggle('active', i === rxI));
-    const it = RX_ITEMS[rxI] || {};
-    rxLink.textContent = it.title || '';
-    rxLink.href = it.url || '#';
-    rxDomain.textContent = domainOf(it.url || '');
-    rxCap.textContent = it.caption || '';
-    rxCat.textContent = it.cat || '';
-    if (rxIdx) rxIdx.textContent = String(rxI + 1).padStart(2, '0');
-  }
-  function rxGo(i) {
-    rxI = (i + RX_ITEMS.length) % RX_ITEMS.length;
-    rxProg = 0; rxUpdate(); rxReset();
-  }
-  function rxNext() { rxGo(rxI + 1); }
-  function rxPrev() { rxGo(rxI - 1); }
-  document.getElementById('rx-next').addEventListener('click', rxNext);
-  document.getElementById('rx-prev').addEventListener('click', rxPrev);
-  function rxStart() {
-    rxStop();
-    rxProg = 0; rxBar.style.width = '0%';
-    rxTimer = setInterval(() => {
-      rxProg += 100;
-      rxBar.style.width = (rxProg / RX_PERIOD * 100) + '%';
-      if (rxProg >= RX_PERIOD) { rxProg = 0; rxNext(); }
-    }, 100);
-  }
-  function rxStop() { if (rxTimer) clearInterval(rxTimer); rxTimer = null; }
-  function rxReset() { rxProg = 0; rxBar.style.width = '0%'; if (rxTimer) rxStart(); }
-  rxStage.addEventListener('mouseenter', rxStop);
-  rxStage.addEventListener('mouseleave', rxStart);
-
   // ===== APHORISMS FEED =====
-  // Persisted in localStorage. Feed shows 10 per page, sorted newest first.
-  // No auto-slide — paging is manual.
-  const APH_KEY = 'fva.aphorisms.v1';
+  // Fetched from /aphorisms.json (server file, not in git — managed via aph.sh on VPS).
+  // Feed shows 10 per page, sorted newest first. No auto-slide — paging is manual.
   const APH_PER_PAGE = 10;
   const aphFeed     = document.getElementById('aph-feed');
-  const aphForm     = document.getElementById('aph-form');
-  const aphInput    = document.getElementById('aph-input');
   const aphPager    = document.getElementById('aph-pager');
   const aphPageIdx  = document.getElementById('aph-page-idx');
   const aphPageTot  = document.getElementById('aph-page-total');
@@ -2134,15 +2055,12 @@
   let aphorisms = [];
   let aphPage = 0;
 
-  function aphLoad() {
+  async function aphLoad() {
     try {
-      const raw = localStorage.getItem(APH_KEY);
-      aphorisms = raw ? JSON.parse(raw) : [];
+      const r = await fetch('/aphorisms.json');
+      aphorisms = r.ok ? await r.json() : [];
       if (!Array.isArray(aphorisms)) aphorisms = [];
     } catch(e) { aphorisms = []; }
-  }
-  function aphSave() {
-    try { localStorage.setItem(APH_KEY, JSON.stringify(aphorisms)); } catch(e) {}
   }
   function aphFmtDate(ts) {
     const d = new Date(ts);
@@ -2160,7 +2078,7 @@
     aphFeed.innerHTML = '';
     if (total === 0) {
       const li = document.createElement('li');
-      li.innerHTML = '<span class="empty">no aphorisms yet — drop the first one above</span>';
+      li.innerHTML = '<span class="empty">no aphorisms yet</span>';
       aphFeed.appendChild(li);
     } else {
       const start = aphPage * APH_PER_PAGE;
@@ -2187,21 +2105,123 @@
       aphPager.hidden = true;
     }
   }
-  aphForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const text = aphInput.value.trim();
-    if (!text) return;
-    aphorisms.push({ text, ts: Date.now() });
-    aphSave();
-    aphInput.value = '';
-    aphPage = 0; // jump to newest page
-    aphRender();
-  });
   aphPrev.addEventListener('click', () => { aphPage--; aphRender(); });
   aphNext.addEventListener('click', () => { aphPage++; aphRender(); });
-  aphLoad(); aphRender();
+  aphLoad().then(() => aphRender());
 
-  // ===== Guestbook (moderated, no instant publish) =====
+  // ===== RECOMMENDED PRODUCTS (recs tab) =====
+  // Add your picks here. Each item: title, url, img (direct URL), caption.
+  // Images are loaded directly from the URL — no local files, no copyright issues.
+  const RX_ITEMS = [
+    // {
+    //   title:   'Product name',
+    //   url:     'https://affiliate-link.com',
+    //   img:     'https://example.com/product-image.jpg',
+    //   caption: 'One-line reason why — who it is for and what it changed.',
+    // },
+  ];
+
+  const rxStage = document.getElementById('rx-stage');
+  const rxBar   = document.getElementById('rx-bar');
+  const rxCtr   = document.getElementById('rx-ctr');
+  const rxLink  = document.getElementById('rx-link');
+  const rxCap   = document.getElementById('rx-cap');
+
+  let rxI = 0, rxProg = 0, rxTimer = null;
+  const RX_PERIOD = 7000;
+
+  function rxPad(n) { return String(n).padStart(2, '0'); }
+
+  function rxBuild() {
+    if (!rxStage) return;
+    RX_ITEMS.forEach((item, i) => {
+      const s = document.createElement('div');
+      s.className = 'rx-slide' + (i === 0 ? ' active' : '');
+      if (item.img) {
+        s.innerHTML = `<img src="${item.img}" alt="${item.title}" loading="lazy">`;
+      } else {
+        s.innerHTML = `<div class="rx-ph-glyph">★</div>`;
+      }
+      rxStage.insertBefore(s, rxBar);
+    });
+    rxUpdate();
+    if (RX_ITEMS.length > 1) rxStart();
+  }
+
+  function rxUpdate() {
+    const slides = rxStage ? rxStage.querySelectorAll('.rx-slide') : [];
+    slides.forEach((s, i) => s.classList.toggle('active', i === rxI));
+    const it = RX_ITEMS[rxI] || {};
+    if (rxLink) { rxLink.textContent = it.title || ''; rxLink.href = it.url || '#'; }
+    if (rxCap)  rxCap.textContent = it.caption || '';
+    if (rxCtr)  rxCtr.textContent = rxPad(rxI + 1) + '/' + rxPad(RX_ITEMS.length);
+  }
+
+  function rxGo(i) {
+    rxI = ((i % RX_ITEMS.length) + RX_ITEMS.length) % RX_ITEMS.length;
+    rxProg = 0; rxUpdate();
+    if (rxBar) rxBar.style.width = '0%';
+  }
+
+  function rxStart() {
+    rxStop();
+    rxTimer = setInterval(() => {
+      rxProg += 100;
+      if (rxBar) rxBar.style.width = (rxProg / RX_PERIOD * 100) + '%';
+      if (rxProg >= RX_PERIOD) { rxProg = 0; rxGo(rxI + 1); }
+    }, 100);
+  }
+  function rxStop() { clearInterval(rxTimer); rxTimer = null; }
+
+  if (rxStage) {
+    rxStage.addEventListener('mouseenter', rxStop);
+    rxStage.addEventListener('mouseleave', () => { if (RX_ITEMS.length > 1) rxStart(); });
+  }
+  const rxPrevBtn = document.getElementById('rx-prev');
+  const rxNextBtn = document.getElementById('rx-next');
+  if (rxPrevBtn) rxPrevBtn.addEventListener('click', () => rxGo(rxI - 1));
+  if (rxNextBtn) rxNextBtn.addEventListener('click', () => rxGo(rxI + 1));
+
+  rxBuild();
+
+  // disclosure toggle
+  const discToggle = document.getElementById('disc-toggle');
+  const discFull   = document.getElementById('disc-full');
+  if (discToggle && discFull) {
+    discToggle.addEventListener('click', () => {
+      const open = !discFull.hidden;
+      discFull.hidden = open;
+      discToggle.textContent = open ? 'full disclosure ↓' : 'collapse ↑';
+    });
+  }
+
+  // ===== Guestbook =====
+  function escHtml(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  // Load approved entries from server
+  (async () => {
+    try {
+      const r = await fetch('/guestbook.json');
+      if (!r.ok) return;
+      const entries = await r.json();
+      if (!Array.isArray(entries) || !entries.length) return;
+      const wrap = document.getElementById('gb-entries-wrap');
+      const list = document.getElementById('gb-entries');
+      entries.forEach(e => {
+        const d = new Date(e.ts);
+        const date = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+        const el = document.createElement('div');
+        el.className = 'gb-entry';
+        el.innerHTML = `<div class="gb-entry-head"><span class="gb-entry-name">${escHtml(e.name)}</span><span class="gb-entry-date">${date}</span></div><p class="gb-entry-text">${escHtml(e.text)}</p>`;
+        list.appendChild(el);
+      });
+      wrap.hidden = false;
+    } catch(e) {}
+  })();
+
+  // Submit new entry → POST to /api/guestbook
   document.getElementById('guestbook').addEventListener('submit', (e) => {
     e.preventDefault();
     const name = document.getElementById('gb-name').value.trim();
@@ -2214,18 +2234,30 @@
       return;
     }
     btn.disabled = true;
-    btn.textContent = "i'm done ✓";
-    stat.style.color = 'var(--lime)';
-    stat.textContent = 'thanks — held for review.';
-    // Wire this to your backend when ready, e.g.:
-    //   fetch('/api/guestbook', { method:'POST', body: JSON.stringify({name,text}) });
-    // Entry will NOT be published until you approve it manually.
-    setTimeout(() => {
+    btn.textContent = 'sending…';
+    fetch('/api/guestbook', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, text }),
+    })
+    .then(r => r.ok ? r.json() : Promise.reject(r.status))
+    .then(() => {
+      stat.style.color = 'var(--lime)';
+      stat.textContent = 'thanks — held for review.';
+      btn.textContent = "i'm done ✓";
+      setTimeout(() => {
+        btn.disabled = false;
+        btn.textContent = "i'm done";
+        stat.textContent = '';
+        document.getElementById('guestbook').reset();
+      }, 2400);
+    })
+    .catch(() => {
+      stat.style.color = 'var(--pink)';
+      stat.textContent = 'something went wrong — try again.';
       btn.disabled = false;
       btn.textContent = "i'm done";
-      stat.textContent = '';
-      document.getElementById('guestbook').reset();
-    }, 2400);
+    });
   });
 
   // ===== SPOTIFY widget removed =====
