@@ -1,11 +1,12 @@
 [Unit]
-Description=Guestbook submission API for site
+Description=Guestbook submission API for florianvasin.com
 After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/python3 /var/www/site/infra/guestbook-api.py
-Environment=GB_PENDING=/var/www/site/guestbook-pending.json
+ExecStart=/usr/bin/node /opt/guestbook-api/server.js
+WorkingDirectory=/opt/guestbook-api
+Environment=GB_PENDING=/var/www/florianvasin.com/guestbook-pending.json
 Environment=GB_PORT=8041
 Restart=always
 RestartSec=5

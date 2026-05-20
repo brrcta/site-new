@@ -2,11 +2,14 @@
 
 | Component | Technology |
 |-----------|------------|
-| <!-- e.g. Backend --> | <!-- e.g. Python / Node / Go --> |
-| <!-- e.g. Hosting --> | <!-- e.g. Hetzner VPS / Fly.io / Vercel --> |
-| <!-- e.g. Containers --> | <!-- e.g. Docker --> |
+| Site | Static HTML (`index.html`) — no build step |
+| Hosting | VPS (Nginx serves `/var/www/florianvasin.com`) |
+| Reverse proxy | Nginx — static files + proxy `/api/guestbook` → Node |
+| Guestbook API | Node.js (`infra/guestbook-api/server.js`), stdlib only, port 8041 |
+| Process manager | systemd (`infra/systemd/guestbook-api.service`) |
+| Deploy | `rsync` via `infra/deploy.sh` — push static files only |
+| Nginx config | `infra/nginx/florianvasin.com.conf` — version-controlled, deployed by setup-vps.sh |
 | Automation | Claude Code CLI, Cron |
-| Remote Control | Telegram bot (`infra/telegram-bot/bot.py`) |
 
 ---
 
